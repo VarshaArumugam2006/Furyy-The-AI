@@ -195,13 +195,18 @@ app.post('/api/chat', async (req, res) => {
   }
 });
 
+// Health check endpoint for cloud platforms like Render
+app.get('/healthz', (req, res) => {
+  res.status(200).send('OK');
+});
+
 // Universal fallback to index.html for SPA routing
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start the server
-app.listen(PORT, () => {
+// Start the server (bind to 0.0.0.0 for Render and cloud hosting)
+app.listen(PORT, '0.0.0.0', () => {
   const keyConfigured = isApiKeyConfigured();
   console.log('\n========================================================');
   console.log('⚡ FURYY : THE AI Server is successfully running!');
