@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules/
+
+# Environment variables (NEVER commit your actual API keys)
+.env
+
+# Logs and OS files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.DS_Store
+Thumbs.db
